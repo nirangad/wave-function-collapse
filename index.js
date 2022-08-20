@@ -54,25 +54,51 @@ function draw() {
       }
     }
   }
-  noLoop();
+  if (POINTER[0] == 0 && POINTER[1] == 0) {
+    noLoop();
+  }
 }
 
 function findNext() {
-  let cell = grid[POINTER[1] + POINTER[0] * GRID_SIZE];
+  let cell = getCell(POINTER[0], POINTER[1]);
+  let topCell, rightCell, bottomCell, leftCell;
+  let entropy = cell.entropy;
 
-  // Top
-  if (POINTER[1] - 1 >= 0) {
+  // Right
+  if (POINTER[0] + 1 < GRID_SIZE) {
+    rightCell = getCell(POINTER[0] + 1, POINTER[1]);
+    entropy = filterCommon(entropy, rightCell.entropy);
   }
 
   // Left
   if (POINTER[0] - 1 >= 0) {
+    leftCell = getCell(POINTER[0] - 1, POINTER[1]);
+    entropy = filterCommon(entropy, leftCell.entropy);
+  }
+
+  // Top
+  if (POINTER[1] - 1 >= 0) {
+    topCell = getCell(POINTER[0], POINTER[1] - 1);
+    entropy.push(topCell.image);
   }
 
   // Bottom
   if (POINTER[1] + 1 < GRID_SIZE) {
+    bottomCell = getCell(POINTER[0], POINTER[1] + 1);
+    entropy = filterCommon(entropy, bottomCell.entropy);
   }
 
-  // Right
-  if (POINTER[0] + 1 < GRID_SIZE) {
+  POINTER[1] = (POINTER[1] + 1) % GRID_SIZE;
+  if (POINTER[1] == 0) {
+    POINTER[0] = (POINTER[0] + 1) % GRID_SIZE;
   }
+}
+
+function getCell(x, y) {
+  grid[y + x * GRID_SIZE];
+}
+
+function filterCommon(to, from) {
+  let common = from.filter((item) => to.includes(item));
+  return common;
 }
