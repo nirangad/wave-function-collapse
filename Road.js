@@ -90,7 +90,7 @@ const rules = [
 function findEntropy(index, side) {
   side = side.toUpperCase();
   let key = `${index}_${side}`;
-  let value = retrieve(key);
+  let value = Memoization.retrieve(key);
   if (value) return value;
 
   let oppositeSide = opposite(side);
@@ -101,7 +101,7 @@ function findEntropy(index, side) {
       value.push(index);
     }
   });
-  store(key, value);
+  Memoization.store(key, value);
   return value;
 }
 

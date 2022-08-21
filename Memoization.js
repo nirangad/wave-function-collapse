@@ -1,9 +1,15 @@
-const memory = {};
+const _memory = {};
 
 function store(key, value) {
-  memory[key] = value;
+  _memory[key] = value;
 }
 
 function retrieve(key) {
-  return memory[key];
+  return _memory[key];
 }
+
+function dumpMemory() {
+  return _memory;
+}
+
+const Memoization = { store, retrieve, dumpMemory };

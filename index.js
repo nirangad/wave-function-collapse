@@ -25,7 +25,7 @@ function loadImages() {
 
 function setup() {
   CANVAS_SIZE = 500;
-  GRID_SIZE = 20;
+  GRID_SIZE = 10;
   IMAGE_SIZE = CANVAS_SIZE / GRID_SIZE;
   POINTER = { row: 0, col: 0 };
   grid = [];
@@ -47,7 +47,7 @@ function setup() {
 }
 
 function draw() {
-  background(50);
+  background(0);
 
   findNext();
 
@@ -57,8 +57,8 @@ function draw() {
       if (cell.collapsed) {
         image(
           cell.tile.image,
-          row * IMAGE_SIZE,
           col * IMAGE_SIZE,
+          row * IMAGE_SIZE,
           IMAGE_SIZE,
           IMAGE_SIZE
         );
@@ -66,6 +66,7 @@ function draw() {
     }
   }
   if (POINTER.row == 0 && POINTER.col == 0) {
+    console.log("Memeory: ", Memoization.dumpMemory());
     noLoop();
   }
 }
