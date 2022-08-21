@@ -66,7 +66,6 @@ function draw() {
     }
   }
   if (POINTER.row == 0 && POINTER.col == 0) {
-    console.log("Memeory: ", Memoization.dumpMemory());
     noLoop();
   }
 }
