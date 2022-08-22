@@ -1,89 +1,132 @@
 const tileImagePath = "./images/forest/";
 const tileImageExt = "png";
+
+const GRASS = 0;
+const WATER = 1;
+const GRASS_BORDER_WATER_HR = 2;
+const GRASS_BORDER_WATER_VR = 3;
+const WATER_BORDER_GRASS_VR = 4;
+const WATER_BORDER_GRASS_HR = 5;
+
 const rules = [
   {
     // 0
-    TOP: 0,
-    RIGHT: 0,
-    BOTTOM: 0,
-    LEFT: 0,
+    TOP: GRASS,
+    RIGHT: GRASS,
+    BOTTOM: GRASS,
+    LEFT: GRASS,
   },
   {
     // 1
-    TOP: 0,
-    RIGHT: 1,
-    BOTTOM: 0,
-    LEFT: 1,
+    TOP: GRASS,
+    RIGHT: GRASS,
+    BOTTOM: GRASS,
+    LEFT: GRASS,
   },
   {
     // 2
-    TOP: 1,
-    RIGHT: 0,
-    BOTTOM: 1,
-    LEFT: 0,
+    TOP: GRASS,
+    RIGHT: GRASS,
+    BOTTOM: GRASS,
+    LEFT: GRASS,
   },
   {
     // 3
-    TOP: 1,
-    RIGHT: 1,
-    BOTTOM: 1,
-    LEFT: 1,
+    TOP: GRASS,
+    RIGHT: GRASS,
+    BOTTOM: GRASS,
+    LEFT: GRASS,
   },
   {
     // 4
-    TOP: 1,
-    RIGHT: 1,
-    BOTTOM: 0,
-    LEFT: 0,
+    TOP: GRASS,
+    RIGHT: GRASS_BORDER_WATER_HR,
+    BOTTOM: GRASS_BORDER_WATER_VR,
+    LEFT: GRASS,
   },
   {
     // 5
-    TOP: 1,
-    RIGHT: 0,
-    BOTTOM: 0,
-    LEFT: 1,
+    TOP: GRASS,
+    RIGHT: GRASS_BORDER_WATER_HR,
+    BOTTOM: WATER,
+    LEFT: GRASS_BORDER_WATER_HR,
   },
   {
     // 6
-    TOP: 0,
-    RIGHT: 1,
-    BOTTOM: 1,
-    LEFT: 0,
+    TOP: GRASS,
+    RIGHT: GRASS,
+    BOTTOM: WATER_BORDER_GRASS_VR,
+    LEFT: GRASS_BORDER_WATER_HR,
   },
   {
     // 7
-    TOP: 0,
-    RIGHT: 0,
-    BOTTOM: 1,
-    LEFT: 1,
+    TOP: GRASS_BORDER_WATER_VR,
+    RIGHT: WATER,
+    BOTTOM: GRASS_BORDER_WATER_VR,
+    LEFT: GRASS,
   },
   {
     // 8
-    TOP: 1,
-    RIGHT: 1,
-    BOTTOM: 1,
-    LEFT: 0,
+    TOP: WATER,
+    RIGHT: WATER,
+    BOTTOM: WATER,
+    LEFT: WATER,
   },
   {
     // 9
-    TOP: 1,
-    RIGHT: 1,
-    BOTTOM: 0,
-    LEFT: 1,
+    TOP: WATER_BORDER_GRASS_VR,
+    RIGHT: GRASS,
+    BOTTOM: WATER_BORDER_GRASS_VR,
+    LEFT: WATER,
   },
   {
     // 10
-    TOP: 1,
-    RIGHT: 0,
-    BOTTOM: 1,
-    LEFT: 1,
+    TOP: GRASS_BORDER_WATER_VR,
+    RIGHT: WATER_BORDER_GRASS_HR,
+    BOTTOM: GRASS,
+    LEFT: GRASS,
   },
   {
     // 11
-    TOP: 0,
-    RIGHT: 1,
-    BOTTOM: 1,
-    LEFT: 1,
+    TOP: WATER,
+    RIGHT: WATER_BORDER_GRASS_HR,
+    BOTTOM: GRASS,
+    LEFT: WATER_BORDER_GRASS_HR,
+  },
+  {
+    // 12
+    TOP: WATER_BORDER_GRASS_VR,
+    RIGHT: GRASS,
+    BOTTOM: GRASS,
+    LEFT: WATER_BORDER_GRASS_HR,
+  },
+  {
+    // 13
+    TOP: GRASS_BORDER_WATER_VR,
+    RIGHT: WATER,
+    BOTTOM: WATER,
+    LEFT: GRASS_BORDER_WATER_HR,
+  },
+  {
+    // 14
+    TOP: WATER_BORDER_GRASS_VR,
+    RIGHT: GRASS_BORDER_WATER_HR,
+    BOTTOM: WATER,
+    LEFT: WATER,
+  },
+  {
+    // 15
+    TOP: WATER,
+    RIGHT: WATER,
+    BOTTOM: GRASS_BORDER_WATER_VR,
+    LEFT: WATER_BORDER_GRASS_HR,
+  },
+  {
+    // 16
+    TOP: WATER,
+    RIGHT: WATER_BORDER_GRASS_HR,
+    BOTTOM: WATER_BORDER_GRASS_VR,
+    LEFT: WATER,
   },
 ];
 
@@ -124,4 +167,4 @@ function opposite(side) {
   }
 }
 
-const Road = { rules, tileImagePath, tileImageExt, findEntropy };
+const Forest = { rules, tileImagePath, tileImageExt, findEntropy };
