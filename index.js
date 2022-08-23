@@ -25,8 +25,8 @@ function loadImages() {
 }
 
 function setup() {
-  CANVAS_SIZE = 700;
-  GRID_SIZE = 30;
+  CANVAS_SIZE = 500;
+  GRID_SIZE = 40;
   IMAGE_SIZE = CANVAS_SIZE / GRID_SIZE;
   POINTER = { row: 0, col: 0 };
   grid = [];
